@@ -1,0 +1,45 @@
+<%- include('./partials/head') %> <%- include('./partials/nav') %>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <h1 class="display-1 text-center my-3">Agenda</h1>
+    <p class="text-center lead">Os seus contactos estão abaixo:</p>
+    <%- include('./partials/messages') %> 
+    <% if(contacts.length > 0){ %>
+    <div class="row">
+      <table class="table">
+        <% contacts.forEach(contact =>{ %>
+        <tr>
+          <td><%= contact.name %></td>
+          <td><%= contact.surname %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.phone %></td>
+          <td><%= contact.address %></td>
+          <td>
+            <a
+              style="text-decoration: none"
+              href="/contact/index/<%= contact._id%>"
+              >edit</a
+            >
+          </td>
+          <td>
+            <a
+              class="text-danger"
+              style="text-decoration: none"
+              href="/contact/delete/<%= contact._id%>"
+              >delete</a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
+    <% }else{ %>
+      <p class="display-1 text-center lead text-danger">
+      has no contact saved
+    </p>
+    <% } %>
+    </div>
+  <div class="col-lg-2"></div>
+</div>
+<%- include('./partials/footer') %>

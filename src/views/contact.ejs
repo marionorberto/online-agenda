@@ -1,0 +1,74 @@
+<%- include('./partials/head') %> <%- include('./partials/nav') %>
+<div class="container">
+  <div class="row my-3">
+    <h1 class="text-center">Contactos</h1>
+    <p class="text-center lead">
+      Abaixo você pode criar ou editar os seus contactos:
+    </p>
+    <div class="col-lg-2"></div>
+
+    <div class="col my-3">
+      <%- include('./partials/messages') %> 
+      <% if(contactRegistered._id){ %>
+      <form action="/contact/edit/<%= contactRegistered._id %>" method="post">
+        <% }else{ %>
+      <form action="/contact/register" method="post">
+        <% } %>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="mb-3">
+          <label for="name" class="form-label">name: </label>
+          <input
+            value="<%= contactRegistered.name %>"
+            type="text"
+            class="form-control"
+            name="name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="surname" class="form-label">surname: </label>
+          <input
+            value="<%= contactRegistered.surname %>"
+            type="text"
+            class="form-control"
+            name="surname"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">email address: </label>
+          <input
+            value="<%= contactRegistered.email %>"
+            type="email"
+            class="form-control"
+            name="email"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">phone: </label>
+          <input
+            value="<%= contactRegistered.phone %>"
+            type="tel"
+            class="form-control"
+            name="phone"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">address: </label>
+          <input
+            value="<%= contactRegistered.address %>"
+            type="text"
+            class="form-control"
+            name="address"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">salvar</button>
+      </form>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<%- include('./partials/footer') %>

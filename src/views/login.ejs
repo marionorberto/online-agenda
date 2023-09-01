@@ -1,0 +1,51 @@
+<%- include('./partials/head') %> <%- include('./partials/nav') %>
+<div class="container">
+  <div class="row my-3">
+    <h1 class="text-center">Cria conta/ Entrar</h1>
+    <p class="text-center lead">Abaixo você pode criar sua conta ou entrar</p>
+    <%- include('./partials/messages') %>
+    <div class="col-lg-2"></div>
+
+    <div class="row">
+      <div class="col my-3">
+        <h4>Criar conta</h4>
+        <p>Se ainda não tem conta, use o formulário abaixo para criar</p>
+        <form action="/login/register" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input class="form-control" name="email" />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Criar minha conta
+          </button>
+        </form>
+      </div>
+
+      <div class="col my-3">
+        <h4>Login</h4>
+        <p>Se já possuir uma conta, faça login abaixo:</p>
+        <form action="/login/login" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input class="form-control" name="email" />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<%- include('./partials/footer') %>
